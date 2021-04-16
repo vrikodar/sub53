@@ -10,3 +10,4 @@
 
 
     
+**sub53 also saves the discovered subdomains to a text file for later use**
