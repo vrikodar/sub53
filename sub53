@@ -1,0 +1,43 @@
+#!/bin/bash
+
+#Author: SxNade :: https://github.com/SxNade :: SxNade@protonmail.com
+
+echo "	----------------------"
+echo "		sub53 v1.0       "
+echo "	----------------------"
+
+echo -e "		SxNade\n"
+
+BGreen='\033[1;32m'
+BRed='\033[1;31m'
+NC='\033[0m'
+
+find_subs() {
+	curl https://crt.sh/?q=${1} | grep -o .*.${1} | awk -F "<TD>" '{print $2}' | awk -F "<BR>" '{print $1}' | sort -u > ${1}.txt
+}
+
+
+for domain in ${@}
+do
+	find_subs ${domain} &
+done
+wait
+
+if [ ${?} -eq 0 ]
+then
+	clear
+	echo -e "\n${BGreen}[+]${NC} subdomain Extraction Successfull..."
+	for domain in ${@}
+	do
+		echo -e "\n[+] Results For ${BRed}${domain}${NC} ::: ${domain}.txt"
+		echo -e "===================================================================================\n"
+
+		for dmn in $(cat ${domain}.txt)
+		do
+			echo -e "${BGreen}-->${NC} ${dmn}"
+		done
+	done
+fi
+
+
+
