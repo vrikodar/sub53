@@ -9,6 +9,7 @@
         $ sudo apt install git
         $ git clone https://github.com/SxNade/sub53
         $ cd sub53
+        $ chmod +x sub53
         
         $ ./sub53 <domain1> <domain2>..................<domainN>
 
