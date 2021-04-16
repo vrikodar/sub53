@@ -11,3 +11,10 @@
 ![Capture](https://github.com/SxNade/SxNade.github.io/blob/main/sub53.gif)
     
 **sub53 also saves the discovered subdomains to a text file for later use**
+
+# Install
+
+*sub53 depends on curl , install curl on your system
+
+                $ sudo apt install curl
+
