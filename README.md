@@ -12,6 +12,8 @@
     
 **sub53 also saves the discovered subdomains to a text file for later use**
 
+![Capture](https://github.com/SxNade/SxNade.github.io/blob/main/sub53fl.gif)
+
 # Install
 
 *sub53 depends on curl , install curl on your system
