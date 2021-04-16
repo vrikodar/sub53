@@ -6,6 +6,10 @@
 
 # Running sub53
 
+        $ sudo apt install git
+        $ git clone https://github.com/SxNade/sub53
+        $ cd sub53
+        
         $ ./sub53 <domain1> <domain2>..................<domainN>
 
 ![Capture](https://github.com/SxNade/SxNade.github.io/blob/main/sub53.gif)
