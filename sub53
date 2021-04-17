@@ -7,7 +7,7 @@ BRed='\033[1;31m'
 NC='\033[0m'
 
 echo "	----------------------"
-echo "		sub53 ${BRed}v1.1a${NC}       "
+echo -e "		sub53 ${BRed}v1.1a${NC}       "
 echo "	----------------------"
 
 echo -e "		SxNade\n"
