@@ -2,15 +2,16 @@
 
 #Author: SxNade :: https://github.com/SxNade :: SxNade@protonmail.com
 
+BGreen='\033[1;32m'
+BRed='\033[1;31m'
+NC='\033[0m'
+
 echo "	----------------------"
-echo "		sub53 v1.0       "
+echo "		sub53 ${BRed}v1.1a${NC}       "
 echo "	----------------------"
 
 echo -e "		SxNade\n"
 
-BGreen='\033[1;32m'
-BRed='\033[1;31m'
-NC='\033[0m'
 
 find_subs() {
 	curl https://crt.sh/?q=${1} | grep -o .*.${1} | awk -F "<TD>" '{print $2}' | awk -F "<BR>" '{print $1}' | sort -u > ${1}.txt
