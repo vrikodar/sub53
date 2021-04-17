@@ -20,6 +20,10 @@
 
 ![Capture](https://github.com/SxNade/SxNade.github.io/blob/main/sub53fl.gif)
 
+# Filtering
+                Once Finished with finding subdomains, sub53 prompts the user for filtering the discovered subdomains
+                accordingly with the user action sub53 goes ahead and performs multithreaded filtering of the data.
+                This not only makes it Fast But also more reliable.
 # Install
 
 *sub53 depends on curl , install curl on your system
