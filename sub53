@@ -41,4 +41,33 @@ then
 fi
 
 
+echo -e "\n${BGreen}[+]${NC} Filtering ${BRed}Alive${NC} subdomains now..\n"
+echo -e "[*] Hit ${BRed}CTRL+C${NC} to stop or ${BGreen}wait${NC} 8 seconds to continue....."
+sleep 15	#Yes Because you will take 7 seconds to read the alert above!
 
+
+function filter() {
+	for domain in $(cat $1)
+	do
+		host ${domain}
+		if [ $? -eq 0 ]
+		then
+			echo ${domain} >> filtered.$1
+		fi
+	done
+	sleep 2
+
+}
+
+
+
+
+for sub in $(ls *.txt)
+do
+	echo -e "[*] Filtering ${BRed}${sub}${NC} now...."
+	filter ${sub}&
+done
+wait
+
+echo -e "${BGreen}[+]${NC} Filtering ${BGreen}successfully${NC} completed...."
+echo -e "\n${BGreen}[+]${BGreen} Filtered results have Been written to ${BRed}filtered${NC}.${BGreen}domain${NC}.txt files\n"
