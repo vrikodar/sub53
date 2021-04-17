@@ -3,6 +3,7 @@
 
 **sub53 is a Lightening Fast multi-threaded subdomain hunter that uses  CA certificates to Hunt Down subdomains**
 
+***Now sub53 can also filter the alive subdomains from all the information gathered***
 
 # Running sub53
 
