@@ -7,11 +7,13 @@ BRed='\033[1;31m'
 NC='\033[0m'
 
 echo "	----------------------"
-echo -e "		sub53 ${BRed}v1.1a${NC}       "
+echo -e "		sub53 ${BRed}v1.1b${NC}       "
+echo -e "		${BRed}(For Linux)${NC}"
 echo "	----------------------"
 
 echo -e "		SxNade\n"
 
+sleep 0.5
 
 find_subs() {
 	curl https://crt.sh/?q=${1} | grep -o .*.${1} | awk -F "<TD>" '{print $2}' | awk -F "<BR>" '{print $1}' | sort -u > ${1}.txt
@@ -40,6 +42,15 @@ then
 	done
 fi
 
+echo -e "=========================================================================================="
+
+for domain in ${@}
+do
+	COUNT=`expr $(wc -l ${domain}.txt | cut -d " " -f1) - 1`
+	echo -e "\n${BRed}[*] Number of subdomains${NC} for ${BGreen}${domain}${NC} ==> \e[1m$COUNT"
+done
+
+sleep 1
 
 echo -e "\n${BGreen}[+]${NC} Filtering ${BRed}Alive${NC} subdomains now..\n"
 echo -e "[*] Hit ${BRed}CTRL+C${NC} to stop or ${BGreen}wait${NC} 8 seconds to continue....."
@@ -70,4 +81,26 @@ done
 wait
 
 echo -e "${BGreen}[+]${NC} Filtering ${BGreen}successfully${NC} completed...."
-echo -e "\n${BGreen}[+]${BGreen} Filtered results have Been written to ${BRed}filtered${NC}.${BGreen}domain${NC}.txt files\n"
+echo -e "\n${BGreen}[+]${NC} Filtered results have Been written to ${BRed}filtered${NC}.${BGreen}domain${NC}.txt files\n"
+
+sleep 1
+
+if [ -d Discovered ]
+then
+	echo -e "${BGreen}[+]${NC} moving  all Discovered data to ${BRed}Discovered${NC} directory.."
+	for file in $(ls *.txt)
+	do
+		mv ${file} Discovered/
+	done
+	echo -e "${BGreen}[+]${NC} Execution completed...\n"
+else
+	echo -e "${BGreen}[+]${NC} making a Directory named ${BRed}Discovered${NC}..\n"
+	mkdir Discovered
+	echo -e "${BGreen}[+]${NC} moving  all Discovered data to ${BRed}Discovered${NC} directory.."
+	for file in $(ls *.txt)
+	do
+		mv ${file} Discovered/
+	done
+	echo -e "${BGreen}[+]${NC} Execution completed...\n"
+fi
+
