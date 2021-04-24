@@ -7,7 +7,7 @@ BRed='\033[1;31m'
 NC='\033[0m'
 
 echo "	----------------------"
-echo -e "		sub53 ${BRed}v2.1a${NC}       "
+echo -e "		sub53 ${BRed}v2.1${NC}       "
 echo -e "		${BRed}(For Linux)${NC}"
 echo "	----------------------"
 
