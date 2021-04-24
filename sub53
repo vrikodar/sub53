@@ -15,7 +15,7 @@ echo -e "		${BGreen}SxNade${NC}\n"
 
 sleep 0.5
 
-if [ $# -lt 3 ]
+if [ $# -lt 1 ]
 then
 	echo
 	echo -e "	${BRed} usage${NC}:${BGreen}==>${NC} "
