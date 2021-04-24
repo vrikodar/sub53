@@ -11,9 +11,22 @@ echo -e "		sub53 ${BRed}v1.1b${NC}       "
 echo -e "		${BRed}(For Linux)${NC}"
 echo "	----------------------"
 
-echo -e "		SxNade\n"
+echo -e "		${BGreen}SxNade${NC}\n"
 
 sleep 0.5
+
+if [ $# -lt 3 ]
+then
+	echo
+	echo -e "	${BRed} usage${NC}:${BGreen}==>${NC} "
+	echo -e "		${BRed}./sub53${NC} ${BGreen}domain1${NC} ${BRed}......${NC} ${BGreen}domainN${NC}"
+	echo
+	echo -e "		${BRed}  0 0${NC}"
+	echo -e "		${BGreen}   |${NC}"
+	echo -e "               ${BGreen}   ---${NC}\n"
+	exit
+fi
+
 
 find_subs() {
 	curl https://crt.sh/?q=${1} | grep -o .*.${1} | awk -F "<TD>" '{print $2}' | awk -F "<BR>" '{print $1}' | sort -u > ${1}.txt
@@ -69,6 +82,40 @@ function filter() {
 	sleep 2
 
 }
+
+
+
+
+for sub in $(ls *.txt)
+do
+	echo -e "[*] Filtering ${BRed}${sub}${NC} now...."
+	filter ${sub}&
+done
+wait
+
+echo -e "${BGreen}[+]${NC} Filtering ${BGreen}successfully${NC} completed...."
+echo -e "\n${BGreen}[+]${NC} Filtered results have Been written to ${BRed}filtered${NC}.${BGreen}domain${NC}.txt files\n"
+
+sleep 1
+
+if [ -d Discovered ]
+then
+	echo -e "${BGreen}[+]${NC} moving  all Discovered data to ${BRed}Discovered${NC} directory.."
+	for file in $(ls *.txt)
+	do
+		mv ${file} Discovered/
+	done
+	echo -e "${BGreen}[+]${NC} Execution completed...\n"
+else
+	echo -e "${BGreen}[+]${NC} making a Directory named ${BRed}Discovered${NC}..\n"
+	mkdir Discovered
+	echo -e "${BGreen}[+]${NC} moving  all Discovered data to ${BRed}Discovered${NC} directory.."
+	for file in $(ls *.txt)
+	do
+		mv ${file} Discovered/
+	done
+	echo -e "${BGreen}[+]${NC} Execution completed...\n"
+fi
 
 
 
