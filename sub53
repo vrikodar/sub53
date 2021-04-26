@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #Author: SxNade :: https://github.com/SxNade :: SxNade@protonmail.com
+# uses cert.sh database under the hood
 
 BGreen='\033[1;32m'
 BRed='\033[1;31m'
